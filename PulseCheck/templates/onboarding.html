@@ -1,24 +1,63 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h2>Team Setup</h2>
-<form method="post">
-  <div class="form-group">
-    <label><input type="radio" name="choice" value="create" checked> Create a New Team</label><br>
-    <label><input type="radio" name="choice" value="join"> Join Existing Team</label>
-  </div>
+<style>
+  body {
+    background: linear-gradient(to bottom, #fff8dc, #ffffff); /* Light golden to white */
+    min-height: 100vh;
+  }
 
-  <div id="create-team" class="form-group">
-    <label>Team Name</label>
-    <input type="text" name="team_name" class="form-control">
-  </div>
+  .onboarding-container {
+    max-width: 500px;
+    margin: 4rem auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
 
-  <div id="join-team" class="form-group" style="display:none;">
-    <label>Invite Code</label>
-    <input type="text" name="invite_code" class="form-control">
-  </div>
+  .onboarding-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+  }
 
-  <button class="btn btn-primary mt-2" type="submit">Continue</button>
-</form>
+  .form-group label {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .form-control {
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    font-weight: bold;
+  }
+</style>
+
+<div class="onboarding-container">
+  <h2>Team Setup</h2>
+  <form method="post">
+    <div class="form-group">
+      <label><input type="radio" name="choice" value="create" checked> Create a New Team</label><br>
+      <label><input type="radio" name="choice" value="join"> Join Existing Team</label>
+    </div>
+
+    <div id="create-team" class="form-group">
+      <label>Team Name</label>
+      <input type="text" name="team_name" class="form-control" placeholder="e.g., Code Masters">
+    </div>
+
+    <div id="join-team" class="form-group" style="display:none;">
+      <label>Invite Code</label>
+      <input type="text" name="invite_code" class="form-control" placeholder="e.g., X7YZ12">
+    </div>
+
+    <button class="btn btn-primary mt-2" type="submit">Continue</button>
+  </form>
+</div>
 
 <script>
 document.querySelectorAll('input[name="choice"]').forEach(radio => {
@@ -28,4 +67,9 @@ document.querySelectorAll('input[name="choice"]').forEach(radio => {
     });
 });
 </script>
+
+<div class="d-flex justify-content-center mt-5 mb-4">
+  <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a>
+</div>
+
 {% endblock %}
