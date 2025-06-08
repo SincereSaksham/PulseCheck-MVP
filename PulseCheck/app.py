@@ -17,7 +17,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir, 'pulsecheck.db')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret')
+app.config['SECRET_KEY'] = 'pulsecheck-secret'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
 
@@ -413,6 +413,38 @@ def join_team():
         return redirect(url_for('dashboard'))
 
 
+
+
+@app.route('/delete_team', methods=['POST'])
+@login_required
+@creator_required
+def delete_team():
+    team = current_user.team
+
+    if not team:
+        flash("No team to delete.", "warning")
+        return redirect(url_for('dashboard'))
+
+    # Remove team_id from all members
+    members = User.query.filter_by(team_id=team.id).all()
+    for member in members:
+        member.team_id = None
+
+    # Delete related data
+    Activity.query.filter_by(team_id=team.id).delete()
+    Mood.query.filter_by(team_id=team.id).delete()
+
+    db.session.delete(team)
+    db.session.commit()
+    flash("Team deleted successfully.", "danger")
+    return redirect(url_for('dashboard'))
+
+
+
+@app.route('/create_team', methods=['GET', 'POST'])
+@login_required
+def create_team():
+    return redirect(url_for('onboarding'))
 
 
 
