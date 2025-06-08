@@ -241,7 +241,7 @@ def dashboard():
         participation_score = min(round((total_activity / 20) * 100), 100)  # cap at 100%
 
         member_stats.append({
-            "user": member,  # ← include the model object
+            "user": member,  
             "name" : member.name,
             "initial": member.name[0],
             "commits": stats.get("Commit", 0),
@@ -253,7 +253,7 @@ def dashboard():
 
 
 
-    # Prepare heatmap data: dict with member names as keys, values are list of activity counts per day
+    
     heatmap_data = {}
 
     for member in team_members:
