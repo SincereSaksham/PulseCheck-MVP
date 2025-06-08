@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Team Setup</h2>
+<form method="post">
+  <div class="form-group">
+    <label><input type="radio" name="choice" value="create" checked> Create a New Team</label><br>
+    <label><input type="radio" name="choice" value="join"> Join Existing Team</label>
+  </div>
+
+  <div id="create-team" class="form-group">
+    <label>Team Name</label>
+    <input type="text" name="team_name" class="form-control">
+  </div>
+
+  <div id="join-team" class="form-group" style="display:none;">
+    <label>Invite Code</label>
+    <input type="text" name="invite_code" class="form-control">
+  </div>
+
+  <button class="btn btn-primary mt-2" type="submit">Continue</button>
+</form>
+
+<script>
+document.querySelectorAll('input[name="choice"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        document.getElementById('create-team').style.display = this.value === 'create' ? 'block' : 'none';
+        document.getElementById('join-team').style.display = this.value === 'join' ? 'block' : 'none';
+    });
+});
+</script>
+{% endblock %}

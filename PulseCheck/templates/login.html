@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block content %}
+<style>
+  body {
+    background-color: #f4f7fc;
+    background-image: url("{{ url_for('static', filename='images/login-bg-top.png') }}");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    min-height: 100vh;
+  }
+</style>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px; border-radius: 12px; background-color: rgba(255,255,255,0.9);">
+    <h2 class="text-center mb-4" style="color: #2c3e50;">Login to PulseCheck</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
+        <label class="form-label" style="font-weight: 500;">{{ form.email.label }}</label>
+        {{ form.email(class="form-control", style="border-radius: 8px;") }}
+      </div>
+      <div class="mb-3">
+        <label class="form-label" style="font-weight: 500;">{{ form.password.label }}</label>
+        {{ form.password(class="form-control", style="border-radius: 8px;") }}
+      </div>
+      <div class="d-grid">
+        {{ form.submit(class="btn btn-primary", style="border-radius: 8px; background-color: #4a90e2; border: none; font-weight: 500;") }}
+      </div>
+    </form>
+    <p class="text-center mt-3" style="font-size: 0.95rem;">Don't have an account?
+      <a href="{{ url_for('register') }}" style="color: #4a90e2; text-decoration: none;">Register</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

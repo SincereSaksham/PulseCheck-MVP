@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Choose Your Team</h2>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">{{ form.team_name.label }} {{ form.team_name(class="form-control") }}</div>
+  <p class="text-center">OR</p>
+  <div class="mb-3">{{ form.invite_code.label }} {{ form.invite_code(class="form-control") }}</div>
+  {{ form.submit(class="btn btn-success") }}
+</form>
+{% endblock %}

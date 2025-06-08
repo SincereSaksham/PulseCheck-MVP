@@ -1,0 +1,114 @@
+/* General body */
+body {
+    background: linear-gradient(to bottom right, #fdf6e3, #fffbea); /* warm white-gold */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h2, h3, h5 {
+    color: #5a4d2c; /* dark golden-brown */
+    font-weight: bold;
+}
+
+/* Layout spacing */
+.container, .content-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Tables */
+/* Team Activity Table Styles */
+.table-custom {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  background: white;
+}
+
+.table-custom thead th {
+  background: linear-gradient(90deg, #f9d976, #f39c12); /* subtle gold gradient */
+  color: white;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.table-custom tbody tr:nth-child(even) {
+  background-color: #fff8e1; /* very light warm tone */
+}
+
+.table-custom tbody tr:hover {
+  background-color: #fff3b0; /* highlight on hover */
+  transition: background-color 0.3s ease;
+}
+
+.table-custom tbody td {
+  padding: 12px 16px;
+  border-top: 1px solid #f0e6a2;
+  vertical-align: middle;
+}
+
+.table-custom thead th:first-child {
+  border-top-left-radius: 12px;
+}
+.table-custom thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.table-custom tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+.table-custom tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* Cards */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    background-color: #fffefa;
+}
+
+.card-title {
+    color: #4d3f1d;
+}
+
+/* Avatar circle */
+.avatar-circle {
+    background-color: #d6ae7b;
+    color: white;
+}
+
+/* Chart area */
+canvas {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* Alert messages */
+.alert {
+    border-radius: 8px;
+}
+
+/* Heatmap cells */
+td[style*="background-color"] {
+    border-radius: 4px;
+}
+
+/* Footer if any */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+}

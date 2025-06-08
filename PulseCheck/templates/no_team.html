@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+  .no-team-background {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* ✅ Controls only the image opacity */
+    z-index: 0;
+  }
+
+  .no-team-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.85); /* optional for readability */
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+  }
+</style>
+
+<div class="no-team-background">
+  <!-- ✅ Background image with low opacity -->
+  <img src="{{ url_for('static', filename='images/no_team_image.jpg') }}" alt="No team background" class="background-img">
+
+  <div class="no-team-content">
+    <h2>You are not part of any team.</h2>
+    <p>Please join a team using an invite code.</p>
+    <form action="{{ url_for('join_team') }}" method="POST" class="d-inline-flex">
+      <input type="text" name="invite_code" placeholder="Enter invite code" class="form-control me-2" required>
+      <button type="submit" class="btn btn-primary">Join Team</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

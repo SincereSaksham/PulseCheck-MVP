@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<style>
+  body {
+    background: linear-gradient(to bottom, #fff4cc, #ffffff); /* light gold to white */
+    min-height: 100vh;
+  }
+
+  .summary-card {
+    border: none;
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background: white;
+    color: #333;
+    padding: 1.5rem;
+    min-height: 160px;
+  }
+
+  .summary-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  }
+
+  .summary-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-value {
+    font-size: 2.3rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+
+  .back-btn {
+    background-color: #f1c40f;
+    border: none;
+    color: black;
+    font-weight: 500;
+  }
+
+  .back-btn:hover {
+    background-color: #d4ac0d;
+    color: white;
+  }
+
+  @media (min-width: 768px) {
+    .summary-row .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .summary-row .col-lg-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+</style>
+
+<div class="container py-5">
+  <h2 class="mb-4 text-center">📊 Team Summary Report</h2>
+  <div class="d-flex justify-content-center mb-4">
+    <a href="{{ url_for('dashboard') }}" class="btn back-btn">← Back to Dashboard</a>
+  </div>
+
+  <div class="row summary-row g-4 justify-content-center">
+    <div class="col-md-6 col-lg-6">
+      <div class="card summary-card text-center">
+        <div class="card-body">
+          <h5 class="summary-title">Total Members</h5>
+          <p class="summary-value">{{ total_members }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-6">
+      <div class="card summary-card text-center">
+        <div class="card-body">
+          <h5 class="summary-title">Active Days This Week</h5>
+          <p class="summary-value">{{ active_days }}/7</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-6">
+      <div class="card summary-card text-center">
+        <div class="card-body">
+          <h5 class="summary-title">Peak Activity Day</h5>
+          <p class="summary-value">{{ peak_day }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-6">
+      <div class="card summary-card text-center">
+        <div class="card-body">
+          <h5 class="summary-title">Most Active Member</h5>
+          <p class="summary-value">{{ most_active_member }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

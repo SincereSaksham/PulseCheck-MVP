@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Daily Check-In</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.blocker.label }}<br>
+        {{ form.blocker(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{ form.mood.label }}<br>
+        {{ form.mood(class="form-control") }}
+    </div>
+
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
